@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Search from '../../components/Search';
+
 const Home: React.FC = () => {
-  return <h1>Home</h1>;
+  return <Search />;
 };
 
 export default Home;
