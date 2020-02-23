@@ -1,12 +1,20 @@
 import styled from 'styled-components';
-import InputMask from 'react-text-mask';
 
 export const Container = styled.div`
   width: 100%;
+  height: 50px;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#2ec8f7),
+    to(#0a88f7)
+  );
+  background: linear-gradient(90deg, #2ec8f7, #0a88f7);
+  position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  padding: 10px;
 
   &:after {
     background: -webkit-gradient(
@@ -40,44 +48,13 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const TitleContainer = styled.div`
   width: 100%;
-  max-width: 500px;
-  border-radius: 4px;
-  padding: 10px;
+  max-width: 992px;
+  padding: 0 10px;
 `;
 
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const Input = styled(InputMask)`
-  height: 36px;
-  width: 100%;
-  max-width: 150px;
-  border-radius: 6px 0 0 6px;
-  border: solid 1px #ccc;
-  padding: 0 12px;
-  font-size: 16px;
-`;
-
-export const Button = styled.button`
-  width: 36px;
-  height: 36px;
-  border-radius: 0 6px 6px 0;
-  background-color: #0083ca;
-  border: none;
-  cursor: pointer;
-
-  i {
-    font-size: 20px;
-    color: #fff;
-  }
-`;
-
-export const InvalidMessage = styled.span`
-  font-size: 12px;
-  color: #f00;
+export const Title = styled.h1`
+  font-size: 20px;
+  color: #fff;
 `;
