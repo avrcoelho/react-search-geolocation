@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
 import axios from 'axios';
+import { render, fireEvent, wait, act } from '@testing-library/react';
 
 import Search from './index';
 
@@ -23,8 +23,8 @@ describe('Search component', () => {
     );
   });
 
-  it('Should be able to postal code valid', () => {
-    const { getByTestId, queryByTestId } = render(<Search />);
+  it('Should be able to dont return data', async () => {
+    const { getByTestId, queryByTestId, getByText } = render(<Search />);
 
     fireEvent.change(getByTestId('postalCode'), {
       target: { value: '13214-770' },
@@ -32,6 +32,35 @@ describe('Search component', () => {
 
     fireEvent.submit(getByTestId('form'));
 
-    expect(queryByTestId(/invalidPostalCode/i)).toBeNull();
+    mockedAxios.get.mockImplementationOnce(() =>
+      Promise.resolve({
+        status: 400,
+      }),
+    );
+
+    await wait(() => expect(queryByTestId(/invalidPostalCode/i)).toBeTruthy());
+    await wait(() =>
+      expect(queryByTestId(/invalidPostalCode/i)).toContainElement(
+        getByText('Erro ao obter o endereço'),
+      ),
+    );
+  });
+
+  it('Should be able to call API', () => {
+    const { getByTestId } = render(<Search />);
+
+    act(() => {
+      fireEvent.change(getByTestId('postalCode'), {
+        target: { value: '13214-770' },
+      });
+
+      fireEvent.submit(getByTestId('form'));
+    });
+
+    mockedAxios.get.mockImplementationOnce(() =>
+      Promise.resolve({
+        data: 1,
+      }),
+    );
   });
 });

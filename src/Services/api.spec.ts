@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { apiViaCep } from './api';
+
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
@@ -23,7 +25,7 @@ describe('API', () => {
       }),
     );
 
-    const { data } = await axios.get('https://viacep.com.br/ws/02050-010/json');
+    const { data } = await apiViaCep.get('/02050-010/json');
 
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     expect(data).toEqual(dataAddress);
@@ -36,9 +38,7 @@ describe('API', () => {
       }),
     );
 
-    const { status } = await axios.get(
-      'https://viacep.com.br/ws/132145-773/json',
-    );
+    const { status } = await apiViaCep.get('/132145-773/json');
 
     expect(status).toEqual(400);
   });

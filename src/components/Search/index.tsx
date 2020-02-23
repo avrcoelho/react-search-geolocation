@@ -30,8 +30,13 @@ const Search: React.FC = () => {
         `/${value}/json`,
       );
 
+      console.log(data);
+
       setDataAdress(data);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+      setError('Erro ao obter o endereço');
+    }
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
