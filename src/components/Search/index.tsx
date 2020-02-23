@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { apiViaCep } from '../../Services/api';
+
 import {
   Container,
   Form,
@@ -9,18 +11,39 @@ import {
   InvalidMessage,
 } from './styles';
 
+interface IAddress {
+  cep: string;
+  logradouro: string;
+  bairro: string;
+  localidade: string;
+  uf: string;
+}
+
 const Search: React.FC = () => {
   const [value, setValue] = useState<string>('');
-  const [isInvalid, setIsInvalid] = useState<boolean>(false);
+  const [error, setError] = useState<null | string>(null);
+  const [dataAdress, setDataAdress] = useState<IAddress | null>(null);
+
+  async function getAddress() {
+    try {
+      const { data }: { data: IAddress } = await apiViaCep.get(
+        `/${value}/json`,
+      );
+
+      setDataAdress(data);
+    } catch (err) {}
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setIsInvalid(false);
+    setError(null);
 
     const rgx = /^([0-9]{5})-([0-9]{3})$/;
 
     if (!rgx.test(value)) {
-      setIsInvalid(true);
+      setError('CEP inválido');
+    } else {
+      getAddress();
     }
   }
 
@@ -42,9 +65,9 @@ const Search: React.FC = () => {
             <i className="fa fa-search"></i>
           </Button>
         </InputContainer>
-        {isInvalid && (
+        {error && (
           <InvalidMessage data-testid="invalidPostalCode">
-            CEP inválido
+            {error}
           </InvalidMessage>
         )}
       </Form>
