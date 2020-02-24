@@ -1,7 +1,15 @@
 import React, { createContext, useState, useContext } from 'react';
 
+export interface IAddress {
+  cep: string;
+  logradouro: string;
+  bairro: string;
+  localidade: string;
+  uf: string;
+}
+
 interface IContext {
-  dataAddress: string | null;
+  dataAddress: IAddress | null;
   setDataAddress: Function;
 }
 
@@ -11,7 +19,7 @@ const AddressContext = createContext<IContext>({
 });
 
 const AddressProvider: React.FC = ({ children }) => {
-  const [dataAddress, setDataAddress] = useState<string | null>(null);
+  const [dataAddress, setDataAddress] = useState<IAddress | null>(null);
 
   return (
     <AddressContext.Provider

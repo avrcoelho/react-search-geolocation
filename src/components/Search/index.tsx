@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { useAddress } from '../../context/useAddress';
 import { apiViaCep } from '../../services/api';
 
 import {
@@ -11,30 +12,27 @@ import {
   InvalidMessage,
 } from './styles';
 
-interface IAddress {
-  cep: string;
-  logradouro: string;
-  bairro: string;
-  localidade: string;
-  uf: string;
-}
-
 const Search: React.FC = () => {
   const [value, setValue] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<null | string>(null);
-  const [dataAdress, setDataAdress] = useState<IAddress | null>(null);
+
+  const { dataAddress, setDataAddress } = useAddress();
 
   async function getAddress() {
     try {
       setLoading(true);
 
-      const { data }: { data: IAddress } = await apiViaCep.get(
-        `/${value}/json`,
-      );
+      const { data } = await apiViaCep.get(`/${value}/json`);
 
       setLoading(false);
-      setDataAdress(data);
+
+      if (data.erro) {
+        setError('CEP não encontrado');
+        return;
+      }
+
+      setDataAddress(data);
     } catch (err) {
       setLoading(false);
       setError('Erro ao obter o endereço');

@@ -21,6 +21,9 @@ export const Address = styled.div`
   display: flex;
   flex-direction: column;
   border-left: 2px solid #0083ca;
+  animation: fade 0.6s;
+  -webkit-animation: fade 0.6s;
+  -moz-animation: fade 0.6s;
 `;
 
 export const Title = styled.h2`
