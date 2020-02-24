@@ -1,10 +1,8 @@
 import React from 'react';
+import { render, fireEvent, wait } from '@testing-library/react';
 import axios from 'axios';
-import { render, fireEvent, wait, act } from '@testing-library/react';
-
 import Search from './index';
 
-jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('Search component', () => {
@@ -24,6 +22,8 @@ describe('Search component', () => {
   });
 
   it('Should be able to dont return data', async () => {
+    mockedAxios.get.mockRejectedValueOnce(new Error('some error'));
+
     const { getByTestId, queryByTestId, getByText } = render(<Search />);
 
     fireEvent.change(getByTestId('postalCode'), {
@@ -32,35 +32,37 @@ describe('Search component', () => {
 
     fireEvent.submit(getByTestId('form'));
 
-    mockedAxios.get.mockImplementationOnce(() =>
-      Promise.resolve({
-        status: 400,
-      }),
-    );
-
-    await wait(() => expect(queryByTestId(/invalidPostalCode/i)).toBeTruthy());
-    await wait(() =>
-      expect(queryByTestId(/invalidPostalCode/i)).toContainElement(
-        getByText('Erro ao obter o endereço'),
-      ),
+    expect(mockedAxios.get).toHaveBeenCalled();
+    await wait(() => expect(queryByTestId(/invalidPostalCode/i)));
+    expect(queryByTestId(/invalidPostalCode/i)).toContainElement(
+      getByText('Erro ao obter o endereço'),
     );
   });
 
-  it('Should be able to call API', () => {
-    const { getByTestId } = render(<Search />);
+  it('Should be able to call API', async () => {
+    const dataAddress = {
+      cep: '02050-010',
+      logradouro: 'Rua Miguel Mentem',
+      complemento: '',
+      bairro: 'Vila Guilherme',
+      localidade: 'São Paulo',
+      uf: 'SP',
+      unidade: '',
+      ibge: '3550308',
+      gia: '1004',
+    };
 
-    act(() => {
-      fireEvent.change(getByTestId('postalCode'), {
-        target: { value: '13214-770' },
-      });
+    mockedAxios.get.mockResolvedValueOnce({ data: dataAddress });
 
-      fireEvent.submit(getByTestId('form'));
+    const { getByTestId, queryByTestId } = render(<Search />);
+
+    fireEvent.change(getByTestId('postalCode'), {
+      target: { value: '13214-770' },
     });
 
-    mockedAxios.get.mockImplementationOnce(() =>
-      Promise.resolve({
-        data: 1,
-      }),
-    );
+    fireEvent.submit(getByTestId('form'));
+
+    expect(mockedAxios.get).toHaveBeenCalled();
+    await wait(() => expect(queryByTestId(/invalidPostalCode/i)).toBeNull());
   });
 });

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { apiViaCep } from '../../Services/api';
+import { apiViaCep } from '../../services/api';
 
 import {
   Container,
@@ -30,11 +30,8 @@ const Search: React.FC = () => {
         `/${value}/json`,
       );
 
-      console.log(data);
-
       setDataAdress(data);
     } catch (err) {
-      console.log(err);
       setError('Erro ao obter o endereço');
     }
   }
