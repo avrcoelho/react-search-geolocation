@@ -10,7 +10,7 @@ const AddressData: React.FC = () => {
   return (
     <Container>
       {dataAddress && (
-        <DataContainer>
+        <DataContainer data-testid="dataContainer">
           <Address>
             <Title>{dataAddress.logradouro}</Title>
             <Details>{dataAddress.bairro}</Details>
