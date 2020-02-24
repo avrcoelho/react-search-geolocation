@@ -5,6 +5,9 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   padding: 0 10px;
+  position: absolute;
+  margin-top: 75px;
+  z-index: 2;
 `;
 
 export const DataContainer = styled.div`
@@ -13,6 +16,9 @@ export const DataContainer = styled.div`
   border-radius: 0 0 4px 4px;
   padding: 10px;
   background-color: #fff;
+  animation: fade 0.6s;
+  -webkit-animation: fade 0.6s;
+  -moz-animation: fade 0.6s;
 `;
 
 export const Address = styled.div`
@@ -21,9 +27,7 @@ export const Address = styled.div`
   display: flex;
   flex-direction: column;
   border-left: 2px solid #0083ca;
-  animation: fade 0.6s;
-  -webkit-animation: fade 0.6s;
-  -moz-animation: fade 0.6s;
+  margin-top: 10px;
 `;
 
 export const Title = styled.h2`

@@ -17,7 +17,7 @@ const Search: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<null | string>(null);
 
-  const { dataAddress, setDataAddress } = useAddress();
+  const { setDataAddress } = useAddress();
 
   async function getAddress() {
     try {
