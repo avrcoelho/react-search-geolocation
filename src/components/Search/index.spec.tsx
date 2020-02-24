@@ -63,6 +63,8 @@ describe('Search component', () => {
     fireEvent.submit(getByTestId('form'));
 
     expect(mockedAxios.get).toHaveBeenCalled();
+    expect(queryByTestId(/loading/i)).toBeTruthy();
     await wait(() => expect(queryByTestId(/invalidPostalCode/i)).toBeNull());
+    expect(queryByTestId(/loading/i)).toBeNull();
   });
 });

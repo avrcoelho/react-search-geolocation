@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  padding: 10px;
+  padding: 0 10px;
 
   &:after {
     background: -webkit-gradient(
@@ -43,8 +43,9 @@ export const Container = styled.div`
 export const Form = styled.form`
   width: 100%;
   max-width: 500px;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   padding: 10px;
+  background-color: #fff;
 `;
 
 export const InputContainer = styled.div`

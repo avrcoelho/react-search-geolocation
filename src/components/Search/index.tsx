@@ -21,17 +21,22 @@ interface IAddress {
 
 const Search: React.FC = () => {
   const [value, setValue] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<null | string>(null);
   const [dataAdress, setDataAdress] = useState<IAddress | null>(null);
 
   async function getAddress() {
     try {
+      setLoading(true);
+
       const { data }: { data: IAddress } = await apiViaCep.get(
         `/${value}/json`,
       );
 
+      setLoading(false);
       setDataAdress(data);
     } catch (err) {
+      setLoading(false);
       setError('Erro ao obter o endereço');
     }
   }
@@ -64,7 +69,11 @@ const Search: React.FC = () => {
             data-testid="postalCode"
           />
           <Button>
-            <i className="fa fa-search"></i>
+            {loading ? (
+              <i className="fa fa-spinner fa-pulse" data-testid="loading" />
+            ) : (
+              <i className="fa fa-search"></i>
+            )}
           </Button>
         </InputContainer>
         {error && (
