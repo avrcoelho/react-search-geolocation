@@ -7,37 +7,8 @@ export const Container = styled.div`
   justify-content: center;
   margin-top: 20px;
   padding: 0 10px;
-
-  &:after {
-    background: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      color-stop(0, #fcd000),
-      color-stop(17%, #ff8a00),
-      color-stop(34%, #ff253a),
-      color-stop(51%, #ff37a8),
-      color-stop(67%, #a400e1),
-      color-stop(83%, #0086ff),
-      to(#00d604)
-    );
-    background: linear-gradient(
-      90deg,
-      #fcd000 0,
-      #ff8a00 17%,
-      #ff253a 34%,
-      #ff37a8 51%,
-      #a400e1 67%,
-      #0086ff 83%,
-      #00d604
-    );
-    bottom: -5px;
-    content: '';
-    display: block;
-    height: 5px;
-    position: absolute;
-    width: 100%;
-  }
+  position: absolute;
+  z-index: 3;
 `;
 
 export const Form = styled.form`
