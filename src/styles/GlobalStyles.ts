@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
     outline: 0;
   }
   body {
-    background: #f5f5f5;
+    background: #dedede;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     font-family: sans-serif;
