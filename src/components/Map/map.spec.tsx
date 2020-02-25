@@ -27,7 +27,7 @@ describe('Map', () => {
     expect(queryByTestId(/mapgl/i)).toBeNull();
   });
 
-  it('Should be able to have map', async () => {
+  it('Should be able to error', async () => {
     const dataMap = {
       results: [
         {
@@ -56,7 +56,7 @@ describe('Map', () => {
     );
   });
 
-  it('Should be able to error', async () => {
+  it('Should be able to have map', async () => {
     const dataMap = {
       results: [
         {

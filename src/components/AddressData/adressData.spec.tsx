@@ -8,7 +8,7 @@ import { AddressContext } from '../../context/useAddress';
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('AdsressData Component', () => {
-  it('Should be able no data', () => {
+  it('Should be able don´t have data', () => {
     const dataAddress = null;
     const setDataAddress = () => {};
 
@@ -21,7 +21,7 @@ describe('AdsressData Component', () => {
     expect(queryByTestId(/dataContainer/i)).toBeNull();
   });
 
-  it('Should be able data', async () => {
+  it('Should be able to have data', async () => {
     const dataAddress = {
       cep: '02050-010',
       logradouro: 'Rua Miguel Mentem',
