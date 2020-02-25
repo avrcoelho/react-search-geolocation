@@ -80,7 +80,7 @@ const Map: React.FC = () => {
   }, [dataAddress]);
 
   return (
-    <Container>
+    <Container data-testid="container-map">
       {geoLocation ? (
         <ContainerMap data-testid="mapgl">
           <MapGL

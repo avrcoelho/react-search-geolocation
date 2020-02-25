@@ -53,7 +53,7 @@ const Search: React.FC = () => {
   }
 
   return (
-    <Container>
+    <Container data-testid="container-search">
       <Form onSubmit={handleSubmit} data-testid="form">
         <InputContainer>
           <Input

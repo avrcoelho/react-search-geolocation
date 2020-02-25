@@ -8,7 +8,7 @@ const AddressData: React.FC = () => {
   const { dataAddress } = useAddress();
 
   return (
-    <Container>
+    <Container data-testid="container-address-data">
       {dataAddress && (
         <DataContainer data-testid="dataContainer">
           <Address>

@@ -50,8 +50,9 @@
     },
     "collectCoverageFrom": [
       "!src/index.tsx",
-      "!src/Apptsx.",
-      "!src/routes/*"
+      "!src/App.tsx",
+      "!src/routes/*",
+      "!src/styles/*"
     ],
     "coverageDirectory": "<rootDir>/src/__tests__/coverage"
   },

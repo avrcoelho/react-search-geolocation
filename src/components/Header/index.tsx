@@ -4,7 +4,7 @@ import { Container, TitleContainer, Title } from './styles';
 
 const Header: React.FC = () => {
   return (
-    <Container>
+    <Container data-testid="container-header">
       <TitleContainer>
         <Title>Buscar Endereço</Title>
       </TitleContainer>

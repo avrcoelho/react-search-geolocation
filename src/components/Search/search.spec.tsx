@@ -7,7 +7,7 @@ import AddressProvider from '../../context/useAddress';
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe('Search component', () => {
+describe('Search', () => {
   it('Should be able to postal code invalid', () => {
     const { getByTestId, queryByTestId, getByText } = render(
       <AddressProvider>
