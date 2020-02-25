@@ -57,7 +57,8 @@ const Map: React.FC = () => {
         );
 
         if (data.error_message) {
-          throw 'Error';
+          setError('Erro ao obter a localização');
+          return;
         }
 
         const [geometry]: IGeoLocation[] = data.results;
