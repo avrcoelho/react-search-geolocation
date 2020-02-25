@@ -4,7 +4,6 @@ import Header from '../../components/Header';
 import Search from '../../components/search';
 import AddressData from '../../components/AddressData';
 import Map from '../../components/Map';
-
 import AddressProvider from '../../context/useAddress';
 
 import { ContainerAddress } from './styles';
