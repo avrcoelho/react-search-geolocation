@@ -21,6 +21,8 @@ interface IResults {
   error_message?: string;
 }
 
+const { REACT_APP_TOKEN_MAPS, REACT_APP_TOKEN_MAPGL } = process.env;
+
 const Map: React.FC = () => {
   const { dataAddress } = useAddress();
   const [viewport, setViewport] = useState({
@@ -51,7 +53,7 @@ const Map: React.FC = () => {
     async function getGeolocation() {
       try {
         const { data }: { data: IResults } = await apiMaps.get(
-          `/geocode/json?address=${dataAddress?.logradouro}&key=AIzaSyDn3kjobwhdVVPyANhoHL0fAVhjXpSRUa4`,
+          `/geocode/json?address=${dataAddress?.logradouro}&key=${REACT_APP_TOKEN_MAPS}`,
         );
 
         if (data.error_message) {
@@ -82,9 +84,7 @@ const Map: React.FC = () => {
         <ContainerMap data-testid="mapgl">
           <MapGL
             mapStyle="mapbox://styles/mapbox/basic-v9"
-            mapboxApiAccessToken={
-              'pk.eyJ1IjoiYW5kcmV2cmNvZWxobyIsImEiOiJjanZiNWZ3bGkxamQ5NGFtZW9yOTU4ODY1In0.ISHC_i_ClZelfGb3KF_RCA'
-            }
+            mapboxApiAccessToken={REACT_APP_TOKEN_MAPGL}
             {...viewport}
             onViewportChange={setViewport}>
             <Marker
