@@ -54,6 +54,7 @@ describe('Map', () => {
     expect(queryByTestId(/error-map/i)).toContainElement(
       getByText('Erro ao obter a localização'),
     );
+    expect(queryByTestId(/mapgl/i)).toBeNull();
   });
 
   it('Should be able to have map', async () => {
@@ -79,5 +80,6 @@ describe('Map', () => {
     );
 
     await wait(() => expect(queryByTestId(/mapgl/i)).toBeTruthy());
+    expect(queryByTestId(/error-map/i)).toBeNull();
   });
 });

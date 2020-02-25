@@ -81,7 +81,7 @@ const Map: React.FC = () => {
 
   return (
     <Container data-testid="container-map">
-      {geoLocation ? (
+      {geoLocation && !error ? (
         <ContainerMap data-testid="mapgl">
           <MapGL
             mapStyle="mapbox://styles/mapbox/basic-v9"

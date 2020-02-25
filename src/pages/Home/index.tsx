@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from '../../components/Header';
-import Search from '../../components/Search';
+import Search from '../../components/search';
 import AddressData from '../../components/AddressData';
 import Map from '../../components/Map';
 
