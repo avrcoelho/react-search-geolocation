@@ -5,10 +5,7 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
   padding: 0 10px;
-  position: absolute;
-  z-index: 3;
 `;
 
 export const Form = styled.form`

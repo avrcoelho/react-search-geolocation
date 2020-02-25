@@ -7,12 +7,16 @@ import Map from '../../components/Map';
 
 import AddressProvider from '../../context/useAddress';
 
+import { ContainerAddress } from './styles';
+
 const Home: React.FC = () => {
   return (
     <AddressProvider>
       <Header />
-      <Search />
-      <AddressData />
+      <ContainerAddress>
+        <Search />
+        <AddressData />
+      </ContainerAddress>
       <Map />
     </AddressProvider>
   );

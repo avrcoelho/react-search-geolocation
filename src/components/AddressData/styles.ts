@@ -5,9 +5,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   padding: 0 10px;
-  position: absolute;
-  margin-top: 75px;
-  z-index: 2;
 `;
 
 export const DataContainer = styled.div`
@@ -27,7 +24,6 @@ export const Address = styled.div`
   display: flex;
   flex-direction: column;
   border-left: 2px solid #0083ca;
-  margin-top: 10px;
 `;
 
 export const Title = styled.h2`
