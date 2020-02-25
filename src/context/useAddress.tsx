@@ -13,7 +13,7 @@ interface IContext {
   setDataAddress: Function;
 }
 
-const AddressContext = createContext<IContext>({
+export const AddressContext = createContext<IContext>({
   dataAddress: null,
   setDataAddress: Function,
 });

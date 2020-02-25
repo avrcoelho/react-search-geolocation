@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import { render, fireEvent, wait, act } from '@testing-library/react';
 import axios from 'axios';
 
 import Search from './index';

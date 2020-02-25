@@ -1,19 +1,21 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import axios from 'axios';
 
 import AddressData from './index';
-import Search from '../Search';
-import AddressProvider from '../../context/useAddress';
+import { AddressContext } from '../../context/useAddress';
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('AdsressData Component', () => {
   it('Should be able no data', () => {
+    const dataAddress = null;
+    const setDataAddress = () => {};
+
     const { queryByTestId } = render(
-      <AddressProvider>
+      <AddressContext.Provider value={{ dataAddress, setDataAddress }}>
         <AddressData />
-      </AddressProvider>,
+      </AddressContext.Provider>,
     );
 
     expect(queryByTestId(/dataContainer/i)).toBeNull();
@@ -23,30 +25,20 @@ describe('AdsressData Component', () => {
     const dataAddress = {
       cep: '02050-010',
       logradouro: 'Rua Miguel Mentem',
-      complemento: '',
       bairro: 'Vila Guilherme',
       localidade: 'São Paulo',
       uf: 'SP',
-      unidade: '',
-      ibge: '3550308',
-      gia: '1004',
     };
+    const setDataAddress = () => {};
 
     mockedAxios.get.mockResolvedValueOnce({ data: dataAddress });
 
-    const { getByTestId, queryByTestId } = render(
-      <AddressProvider>
-        <Search />
+    const { queryByTestId } = render(
+      <AddressContext.Provider value={{ dataAddress, setDataAddress }}>
         <AddressData />
-      </AddressProvider>,
+      </AddressContext.Provider>,
     );
 
-    fireEvent.change(getByTestId('postalCode'), {
-      target: { value: '13214-770' },
-    });
-
-    fireEvent.submit(getByTestId('form'));
-
-    await wait(() => expect(queryByTestId(/dataContainer/i)).toBeTruthy());
+    expect(queryByTestId(/dataContainer/i)).toBeTruthy();
   });
 });
