@@ -4,7 +4,7 @@
 
 ## Demonstação
 
-A aplicação esta hospedada no [netlify](https://www.netlify.com/). Acesse o link [https://unruffled-hermann-6fc551.netlify.com/](https://unruffled-hermann-6fc551.netlify.com/) para executa-la.
+A aplicação está hospedada no [netlify](https://www.netlify.com/). Acesse o link [https://unruffled-hermann-6fc551.netlify.com/](https://unruffled-hermann-6fc551.netlify.com/) para executa-la.
 
 ## Instalação
 

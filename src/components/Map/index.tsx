@@ -56,6 +56,11 @@ const Map: React.FC = () => {
           `/geocode/json?address=${dataAddress?.logradouro}&key=${REACT_APP_TOKEN_MAPS}`,
         );
 
+        if (!data.results.length) {
+          setError('Resultado não encontrado no mapa');
+          return;
+        }
+
         if (data.error_message) {
           setError('Erro ao obter a localização');
           return;

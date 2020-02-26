@@ -82,4 +82,24 @@ describe('Map', () => {
     await wait(() => expect(queryByTestId(/mapgl/i)).toBeTruthy());
     expect(queryByTestId(/error-map/i)).toBeNull();
   });
+
+  it('Should be able to zero results', async () => {
+    const dataMap = {
+      results: [],
+    };
+
+    mockedAxios.get.mockResolvedValueOnce({ data: dataMap });
+
+    const { queryByTestId, getByText } = render(
+      <AddressContext.Provider value={{ dataAddress, setDataAddress }}>
+        <Map />
+      </AddressContext.Provider>,
+    );
+
+    await wait(() => expect(queryByTestId(/error-map/i)).toBeTruthy());
+    expect(queryByTestId(/error-map/i)).toContainElement(
+      getByText('Resultado não encontrado no mapa'),
+    );
+    expect(queryByTestId(/mapgl/i)).toBeNull();
+  });
 });
