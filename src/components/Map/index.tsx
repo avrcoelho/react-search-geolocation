@@ -80,6 +80,7 @@ const Map: React.FC = () => {
     }
 
     if (dataAddress?.logradouro) {
+      setError(null);
       getGeolocation();
     }
   }, [dataAddress]);
