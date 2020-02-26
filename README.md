@@ -1,44 +1,100 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Busca de Endereço
 
-## Available Scripts
+> Aplicação para busca de endereço pelo CEP, utilizando a API [ViaCEP](https://viacep.com.br/) e exibir a localização no Mapa com a API do [Google Map](https://maps.googleapis.com/)
 
-In the project directory, you can run:
+## Demonstação
 
-### `yarn start`
+A aplicação esta hospedada no [netlify](https://www.netlify.com/). Acesse o link [https://unruffled-hermann-6fc551.netlify.com/](https://unruffled-hermann-6fc551.netlify.com/) para executa-la.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Instalação
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+_Tenha instalado em sua maquina o [Git](http://git-scm.com/). Caso prefira, instale o [Yarn](https://yarnpkg.com/)._
 
-### `yarn test`
+1. Fork este repositório e crie um novo branch — ou crie um novo branch caso tenha permissão.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Depois de obter sua cópia local, instale suas dependências:
 
-### `yarn build`
+   ```sh
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ou
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+   ```sh
+   yarn
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4) Crie um arquivo `.env` no diretório raiz, com as sequintes variaveis:
 
-### `yarn eject`
+   ```sh
+   REACT_APP_URL_API_VIACEP=https://viacep.com.br/ws
+   REACT_APP_URL_API_MAPS=https://maps.googleapis.com/maps/api
+   REACT_APP_TOKEN_MAPS=<KEY Google Maps>
+   REACT_APP_TOKEN_MAPGL=<KEY MapGL>
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Execução
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Após a instalação, você podera executar a aplicação em modo de desenvolvimento:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ou
 
-## Learn More
+```sh
+yarn start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+_Isso iniciará o servidor em `localhost:3000`_
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Build
+
+Execute:
+
+```sh
+npm run build
+```
+
+ou
+
+```sh
+yarn build
+```
+
+_Isso irá criar um diretório `build` na raiz, com a aplicacão preparada para ser executada em producão._
+
+## Testes
+
+_Todos os arquivos de testes terminam com `.spec.tsx`_
+
+Use o seguinte comando para executar os testes:
+
+```sh
+npm test
+```
+
+ou
+
+```sh
+yarn test
+```
+
+_Caso deseja gerar os aquivos de Coverage, execute:_
+
+```sh
+npm run coverage
+```
+
+ou
+
+```sh
+yarn coverage
+```
+
+_Isso irá criar um diretório `__tests__` dentro do diretório `src` com os arquivos de Coverage_
+
+## Licença
+
+[MIT](https://opensource.org/licenses/MIT)
