@@ -1,6 +1,6 @@
 # Busca de Endereço
 
-> Aplicação para busca de endereço pelo CEP, utilizando a API [ViaCEP](https://viacep.com.br/) e exibir a localização no Mapa com a API do [Google Map](https://maps.googleapis.com/)
+> Aplicação para busca de endereço pelo CEP, utilizando as API`s [ViaCEP](https://viacep.com.br/) e [Google Map](https://maps.googleapis.com/) para exibir a localização no Mapa.
 
 ## Demonstação
 
