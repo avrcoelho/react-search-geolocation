@@ -17,14 +17,14 @@ describe('Map', () => {
   };
   const setDataAddress = () => {};
 
-  it('Should be able to don´t have map', () => {
+  it('Should be able to don´t have map', async () => {
     const { queryByTestId } = render(
       <AddressContext.Provider value={{ dataAddress, setDataAddress }}>
         <Map />
       </AddressContext.Provider>,
     );
 
-    expect(queryByTestId(/mapgl/i)).toBeNull();
+    await wait(() => expect(queryByTestId(/mapgl/i)).toBeNull());
   });
 
   it('Should be able to error', async () => {
