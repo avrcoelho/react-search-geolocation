@@ -8,7 +8,7 @@ A aplicação está hospedada no [netlify](https://www.netlify.com/). Acesse o l
 
 ## Instalação
 
-_Tenha instalado em sua maquina o [Git](http://git-scm.com/). Caso prefira, instale o [Yarn](https://yarnpkg.com/)._
+_Tenha instalado em sua maquina o [Git](http://git-scm.com/) e [Node.js](http://nodejs.org/) 10.0.0 (ou superior). Caso prefira, instale o [Yarn](https://yarnpkg.com/)._
 
 1. Fork este repositório e crie um novo branch — ou crie um novo branch caso tenha permissão.
 
