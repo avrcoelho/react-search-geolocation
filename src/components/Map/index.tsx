@@ -50,10 +50,12 @@ const Map: React.FC = () => {
   }, [handleResize]);
 
   useEffect(() => {
-    async function getGeolocation() {
+    async function getGeolocation(address: string) {
       try {
         const { data }: { data: IResults } = await apiMaps.get(
-          `/geocode/json?address=${dataAddress?.logradouro}&key=${REACT_APP_TOKEN_MAPS}`,
+          `/geocode/json?address=${encodeURI(
+            address,
+          )}&key=${REACT_APP_TOKEN_MAPS}`,
         );
 
         if (!data.results.length) {
@@ -81,7 +83,7 @@ const Map: React.FC = () => {
 
     if (dataAddress?.logradouro) {
       setError(null);
-      getGeolocation();
+      getGeolocation(dataAddress?.logradouro);
     }
   }, [dataAddress]);
 
